@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Login } from 'src/app/models/login';
 import { Register } from 'src/app/models/register';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.development';
 import { JwtAuth } from 'src/app/models/jwtAuth';
 
 @Injectable({
