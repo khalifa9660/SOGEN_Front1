@@ -1,0 +1,17 @@
+<div id="background">
+    <div class="container-fluid g-0">
+      <app-header (sideNavToggled)="sideNavStatus = $event" [leagueList]="leagueList" (leagueSelected)="onLeagueSelected($event)"></app-header>
+      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
+      <main [ngClass]="{ 'blur-background': sideNavStatus }">
+        <div class="display-area p-3">
+          <article> 
+            <div class="text-center mt-5 mb-5">
+              <p class="fs-1 fw-bold fst-italic">List of championship</p>
+            </div>
+            <app-grid #agGrid [gridReadyParams]="gridReadyParams" [columnDefs]="columnDefs" [rowData]="rowData" [defaultColDef]="defaultColDef"></app-grid>
+          </article>
+        </div>
+      </main>
+    </div>
+  </div>
+  

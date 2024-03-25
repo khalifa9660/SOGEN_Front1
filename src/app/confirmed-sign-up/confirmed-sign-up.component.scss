@@ -1,0 +1,78 @@
+
+body{
+    height: 100vh;
+    width: 100%;
+    background: #020410;
+  }
+
+  .content .logo{
+    font-size: 24px;
+    color: azure;
+  }
+  
+  .background {
+    width: 100%;
+    height: 100vh;
+    background: url(../../assets/Img/5073414.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+  
+  }
+
+  .container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 550px;
+    background: url('../../assets/Img/5073414.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+ 
+  
+  .container .content {
+    width: 56%;
+    height: 70%;
+    background: transparent;
+    padding: 80px;
+    color: #e4e4e4;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .container .content a{
+    position: relative;
+    width: 35%;
+    justify-content: center;
+    align-items: center;
+    left: 30%;
+  }
+
+  
+.text-sci h3 {
+   line-height: 1;
+   color: azure;
+   font-size: 17px;
+  }
+  
+  .text-sci h3 span{
+    font-size: 40px;
+    color: azure;
+  }
+  
+  .text-sci p {
+    font-size: 16px;
+    margin: 20px 0;
+    color: azure;
+  }
+

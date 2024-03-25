@@ -1,0 +1,25 @@
+<div id="background">
+    <div class="container-fluid g-0">
+      <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
+      <main [ngClass]="{ 'blur-background': sideNavStatus }">
+        <div class="display-area p-3">
+          <article> 
+            <div class="text-center mt-5 mb-5">
+              <p class="fs-1 fw-bold fst-italic">Your Dream Team</p>
+            </div>
+            <div class="grid-container">
+              <div class="grid-header">
+                <button (click)="addPlayer()" >Add player</button>
+                <button (click)="deleteSelectedRows(this.rowToDelete)">Delete Rows</button>
+                <button (click)="updatePlayer(this.player)">Save</button>
+              </div>
+            </div>
+            <app-grid #createComponent #agGrid (dataChanged)="OnDataChanged($event)" (selectionChanged)="receiveSelectedRows($event)" [columnDefs]="columnDefs" [rowData]="rowData" [defaultColDef]="defaultColDef"
+            ></app-grid>
+          </article>
+        </div>
+      </main>
+    </div>
+  </div>
+    

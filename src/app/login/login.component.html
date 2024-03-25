@@ -1,0 +1,68 @@
+<body>
+
+    <div class="background"></div>
+    <div class="container">
+      <div class="content">
+        <h2 class="logo"><i class='bx bx-football' ></i> SOGEN</h2>
+        <div class="text-sci">
+          <h2>Welcome! <br><span>To our new web site.</span></h2>
+  
+          <p>Discovering inter-generational football: A link that unites enthusiasts, from one generation to the next. </p>
+        </div>
+  
+        <div class="social-icons">
+          <a href=""><i class='bx bxl-instagram-alt' ></i></a>
+          <a href=""><i class='bx bxl-twitter' ></i></a>
+          <a href=""><i class='bx bxl-linkedin-square' ></i></a>
+          <a href=""><i class='bx bxl-facebook-square' ></i></a>
+        </div>
+  
+      </div>
+  
+      <div class="logreg-box">
+        <div class="form-box login">
+          <form action="#" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-3">
+            <h2>Sign in</h2>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bxs-envelope' ></i></span>
+                <input type="email" [(ngModel)]="loginDto.email" name="email" class="form-control" placeholder="Email" formControlName="email" id="email" required>
+              </div>
+              <div *ngIf="emailControl?.invalid && emailControl?.touched">
+                <span *ngIf="emailControl?.errors?.['required']" class="text-danger">Email is required</span>
+                <span *ngIf="emailControl?.errors?.['email']" class="text-danger">Email is invalid</span>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bxs-lock-alt' ></i></span>
+                <input type="password" [(ngModel)]="loginDto.password" name="password" class="form-control" placeholder="Password" formControlName="password" id="password" required>
+              </div>
+              <div *ngIf="passwordControl?.invalid && passwordControl?.touched">
+                <span *ngIf="passwordControl?.errors?.['required'] && !this.submitted" class="text-danger">Password is required</span>
+                <span *ngIf="this.submitted" class="text-danger">12 characters minimum including an uppercase letter, 1 special character and 1 number</span>
+              </div>
+              <div *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+            </div>
+  
+            <button type="submit" class="btn btn-primary" (click)="login(loginDto)">
+              Sign in
+            </button>
+  
+            <div class="mt-3">
+              <p>Don't have an account? <a href="" class="register-link" routerLink="/register">Sign up</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+  
+    </div>
+  </body>
+  

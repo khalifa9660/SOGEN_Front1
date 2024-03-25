@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+    <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()">
+      <i class="bi bi-justify"></i>
+    </div>
+  
+    <a class="navbar-brand px-4" href="#">SOGEN</a>
+  
+    <div class="navbar-collapse justify-content-between">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="seasonList.length > 0">Seasons</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <select class="dropdown-item" (change)="selectedSeason($event)">
+                <option *ngFor="let sea of seasonList" [value]="sea">{{ sea }}</option>
+              </select>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="leagueList.length > 0">Leagues</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <select class="dropdown-item" (change)="selectedLeague($event)"> 
+                <option *ngFor="let lea of leagueList" [value]="lea.id">{{ lea.name }}</option>
+              </select>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="nationalTeamList.length > 0">National Teams</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <select class="dropdown-item" (change)="selectedTeam($event)"> 
+                <option *ngFor="let team of nationalTeamList" [value]="team.id">{{ team.name }}</option>
+              </select>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="laligaList.length > 0">Liga</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <select class="dropdown-item" (change)="selectedTeam($event)"> 
+                <option *ngFor="let team of laligaList" [value]="team.id">{{ team.name }}</option>
+              </select>
+            </li>
+          </ul>
+        </li> 
+  
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="ligue1List.length > 0">Ligue 1</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <select class="dropdown-item" (change)="selectedTeam($event)"> 
+              <option *ngFor="let team of ligue1List" [value]="team.id">{{ team.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </li> 
+  
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="premierLeagueList.length > 0">Premier League</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <select class="dropdown-item" (change)="selectedTeam($event)"> 
+              <option *ngFor="let team of premierLeagueList" [value]="team.id">{{ team.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </li> 
+  
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="bundesligaList.length > 0">Bundesliga</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <select class="dropdown-item" (change)="selectedTeam($event)"> 
+              <option *ngFor="let team of bundesligaList" [value]="team.id">{{ team.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </li> 
+  
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="seriaAList.length > 0">Seria A</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <select class="dropdown-item" (change)="selectedTeam($event)"> 
+              <option *ngFor="let team of seriaAList" [value]="team.id">{{ team.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </li> 
+  
+  
+    </ul>
+    
+      <form class="d-flex me-4 ml-5">
+        <button class="btn btn-outline-light" (click)="logout()" type="button">Log out</button>
+      </form>
+    </div>
+    
+    
+  
+    <li class="nav-item">
+      <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+      </a>
+    </li>
+  </nav>
+  

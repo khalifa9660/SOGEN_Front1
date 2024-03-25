@@ -1,0 +1,105 @@
+<body>
+    <!-- <header>
+      <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+  
+      <form action="" class="search-bar">
+        <input type="text" placeholder="Search">
+        <button type="submit"><i class='bx bx-search'></i></button>
+      </form>
+    </header> -->
+  
+    <div class="background"></div>
+    <div class="container">
+      <div class="content">
+        <h2 class="logo"><i class='bx bx-football'></i> SOGEN</h2>
+        <div class="text-sci">
+          <h2>Welcome! <br><span>To our new web site.</span></h2>
+          <p>Discovering inter-generational football: A link that unites enthusiasts, from one generation to the next.</p>
+        </div>
+  
+        <div class="social-icons">
+          <a href=""><i class='bx bxl-instagram-alt'></i></a>
+          <a href=""><i class='bx bxl-twitter'></i></a>
+          <a href=""><i class='bx bxl-linkedin-square'></i></a>
+          <a href=""><i class='bx bxl-facebook-square'></i></a>
+        </div>
+  
+      </div>
+  
+      <div class="logreg-box">
+        <div class="form-box register">
+          <form action="#" [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="p-3">
+            <h2>Registration</h2>
+  
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bx-user'></i></span>
+                <input type="Name" [(ngModel)]="registerDto.name" name="name" class="form-control" placeholder="Name" id="name" formControlName="name" required>
+              </div>
+              <div *ngIf="nameControl?.invalid && nameControl?.touched" class="text-danger">
+                <span *ngIf="nameControl?.errors?.['required']">Name is required</span>
+                <span *ngIf="nameControl?.errors?.['pattern']">Name is invalid</span>
+              </div>
+            </div>
+            
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bxs-envelope'></i></span>
+                <input type="email" [(ngModel)]="registerDto.email" name="email" class="form-control" placeholder="Email" id="email" formControlName="email" required>
+              </div>
+              <div *ngIf="emailControl?.invalid && emailControl?.touched">
+                <span *ngIf="emailControl?.errors?.['required']" class="text-danger">Email is required</span>
+                <span *ngIf="emailControl?.errors?.['email']" class="text-danger">Email is invalid</span>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bxs-lock-alt'></i></span>
+                <input type="password" [(ngModel)]="registerDto.password" name="password" class="form-control" placeholder="Password" id="password" formControlName="password" required>
+              </div>
+              <div *ngIf="passwordControl?.invalid && passwordControl?.touched">
+                <span *ngIf="passwordControl?.errors?.['required'] && !this.submitted" class="text-danger">Password is required</span>
+                <span *ngIf="passwordControl?.errors?.['pattern']" class="text-danger">12 characters minimum including an uppercase letter, 1 special character and 1 number</span>
+              </div>
+              <div *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bxs-lock-alt'></i></span>
+                <input type="password" [(ngModel)]="registerDto.confirmPassword" name="confirmPassword" class="form-control" placeholder="confirm Password" id="confirmPassword" formControlName="confirmPassword" required>
+              </div>
+              <div *ngIf="confirmPasswordControl?.invalid && confirmPasswordControl?.touched">
+                <span *ngIf="confirmPasswordControl?.errors?.['required'] && !this.submitted" class="text-danger">Confirm Password is required</span>
+                <span *ngIf="confirmPasswordControl?.errors?.['MustMatch']" class="text-danger">Confirm Password isn't the same</span>
+              </div>
+              <div *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" (click)="register(registerDto)" [disabled]="registerForm.invalid">
+              Sign up
+            </button>
+  
+            <div class="mt-3">
+              <p>Already have an account? <a href="" class="login-link" routerLink="/login">Sign in</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+  
