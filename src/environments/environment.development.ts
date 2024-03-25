@@ -1,3 +1,5 @@
 export const environment = {
-    apiUrl: "https://localhost:7171/api"
+    apiUrl: "https://sogenaccountprod-b65630290e4d.herokuapp.com"
+
+    // apiUrl: "https://localhost:7171/api"
 };
