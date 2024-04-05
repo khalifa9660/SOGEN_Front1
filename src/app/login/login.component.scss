@@ -211,15 +211,16 @@ body{
   }
   
   @media screen and (max-width: 900px) {
-    body .container .content {
+     .container .content {
       display: none;
     }
   
     .container .logreg-box {
-      position: absolute;
+      position: absolute !important;
       top: 0;
       right: 0;
       width: calc(0% - 100%);
+      padding-right: 30%;
       height: 100%;
       overflow: hidden;
     }

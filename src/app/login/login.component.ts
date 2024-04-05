@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erreur lors de la connexion :', error);
-        // Gérer l'erreur ici, par exemple afficher un message d'erreur
         this.errorMessage = "Invalid authentication";
       }
     });

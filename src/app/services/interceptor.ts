@@ -14,6 +14,8 @@ export class AuthenticationInterceptor implements HttpInterceptor {
             req = req.clone({
                 setHeaders: {Authorization: `Bearer ${token}`}
             });
+        } else {
+            console.error("Absence du Token dans le header.")
         }
 
         return next.handle(req);

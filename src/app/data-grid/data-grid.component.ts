@@ -31,8 +31,6 @@ import { PlayerModel } from '../models/player';
 })
 
 
-
-
 export class DataGridModule {
 createComponent: any;
   constructor(private http: HttpClient, private router: Router ){}
