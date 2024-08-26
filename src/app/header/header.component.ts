@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthActionService } from "../services/AuthService/authService";
 import { TokenStorageService } from "../services/token/token.service";
-import { teamsName } from "../models/teamNames";
+import { teamsName } from "../models/externalDataModels/teamNames";
 
 @Component({
   selector: "app-header",
@@ -44,11 +44,7 @@ export class HeaderComponent {
   // Bundesliga
   @Input() bundesligaList: teamsName[] = []; 
 
-
-
   @Output() teamSelected = new EventEmitter<number>();
-
-  
 
 
   SideNavToggle() {

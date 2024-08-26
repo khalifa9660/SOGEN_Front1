@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Login } from "../models/login";
-import { Register } from "../models/register";
-import { JwtAuth } from "../models/jwtAuth";
+import { Login } from "../models/authentificationModels/login";
+import { Register } from "../models/authentificationModels/register";
+import { JwtAuth } from "../models/authentificationModels/jwtAuth";
 import { AuthenticationService } from "../services/account-manager/authentification.service";
 import { Router } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";

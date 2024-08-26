@@ -1,6 +1,6 @@
 // my-object.service.ts
 import { Injectable } from '@angular/core';
-import { teamsName } from 'src/app/models/teamNames';
+import { teamsName } from 'src/app/models/externalDataModels/teamNames';
 
 @Injectable({
   providedIn: 'root'

@@ -1,10 +1,33 @@
-<div class="side-nav-content">
+  <div class="side-nav-content">
     <ul class="nav-list" [ngClass]="{ 'nav-list-open': sideNavStatus }">
-      <li class="nav-list-item" *ngFor="let item of list">
-        <a [routerLink]="['/' + item.name.toLowerCase()]">
+      <li class="nav-list-item" *ngFor="let item of menu"  (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
           <i class="{{ item.icon }}"></i>
           <span>{{ item.name }}</span>
-        </a>
+
+        <ul *ngIf="item.subMenu" class="sub-nav-list" >
+          <li class="sub-nav-list-item" *ngFor="let subItem of item.subMenu">
+            <a [routerLink]="['/' + subItem.name.toLowerCase()]">
+              <i class="{{ subItem.icon }}"></i>
+              <span>{{ subItem.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul class="nav-list2" [ngClass]="{ 'nav-list-open2': sideNavStatus }">
+      <li class="nav-list-item2" [ngClass]="{ 'nav-list-item-down2': isDescended }" *ngFor="let item of menu2">
+          <i class="{{ item.icon }}"></i>
+          <span>{{ item.name }}</span>
+          
+        <ul *ngIf="item.subMenu2" class="sub-nav-list2">
+          <li class="sub-nav-list-item2" *ngFor="let subItem of item.subMenu2">
+            <a [routerLink]="['/' + subItem.name.toLowerCase()]">
+              <i class="{{ subItem.icon }}"></i>
+              <span>{{ subItem.name }}</span>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

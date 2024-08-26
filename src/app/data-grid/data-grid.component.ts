@@ -3,7 +3,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, ModuleRegistry, ICellRendererParams, GridApi, GridOptions, IsRowSelectable, IRowNode, CellValueChangedEvent, SelectionChangedEvent  } from 'ag-grid-community'; // Column Definition Type Interface
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { PlayerModel } from '../models/player';
+import { PlayerModel } from '../models/externalDataModels/player';
 
 @Component({
   selector: 'app-grid',
