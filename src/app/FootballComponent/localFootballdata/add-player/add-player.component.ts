@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PlayerModel } from 'src/app/models/externalDataModels/player';
 import { LocalPlayerModel, ILocalPlayerModel } from 'src/app/models/localDataModels/localPlayer'; 
+import { LocalTeamModel } from 'src/app/models/localDataModels/localTeam';
 import { LocalPlayerService } from 'src/app/services/footballData/LocalData/localPlayer.service'; 
+import { LocalTeamService } from 'src/app/services/footballData/LocalData/localTeam.service';
 
 @Component({
   selector: 'app-add-player',
@@ -16,12 +18,14 @@ export class AddPlayerComponent implements OnInit {
   sideNavStatus: boolean = false;
   errorMessage: string='';
   
-  constructor(private http: HttpClient, private router: Router, private FormBuilder: FormBuilder, private localPlayerService: LocalPlayerService ){}
+  constructor(private http: HttpClient, private router: Router, private FormBuilder: FormBuilder, private localPlayerService: LocalPlayerService, private TeamService: LocalTeamService ){}
  
   player= new LocalPlayerModel();
   selectedFile: File | null = null;
   imageUrl: string | ArrayBuffer | null = null;
-  addPlayerForm!:FormGroup
+  addPlayerForm!:FormGroup;
+  teamSelection!:LocalTeamModel[]
+
 
   ngOnInit(): void {
     this.addPlayerForm = this.FormBuilder.group({
@@ -29,11 +33,18 @@ export class AddPlayerComponent implements OnInit {
       number: ['', Validators.required],
       photo: ['', Validators.required],
       age: ['', Validators.required],
-      position: ['', Validators.required]
+      position: ['', Validators.required],
+      nationality: ['', Validators.required],
+      teamId: ['', Validators.required],
     });
+
+    this.TeamService.GetAllTeams().subscribe(data =>{
+      this.teamSelection = data
+    })
   }
 
   savePlayer() {
+    debugger
     // Mettez ici votre logique pour enregistrer le joueur  
     if (this.addPlayerForm.valid) {
       const player = this.addPlayerForm.value; // Récupérer les données du formulaire

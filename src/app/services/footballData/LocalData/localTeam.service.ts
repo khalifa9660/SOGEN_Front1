@@ -28,6 +28,11 @@ export class LocalTeamService {
         return this.http.post<LocalTeamModel>(AddPTeam, team, {headers: this.GetHeaders() })
     }
 
+    GetAllTeamsWithoutUserId(): Observable<LocalTeamModel[]> {
+        let AllTeams = `${environment.apiUrl}/Team/GetAllTeamsWithoutUserId`;
+        return this.http.get<LocalTeamModel[]>(AllTeams,{headers: this.GetHeaders() })
+    }
+
     GetAllTeams(): Observable<LocalTeamModel[]> {
         let AllTeams = `${environment.apiUrl}/Team/GetAllTeams`;
         return this.http.get<LocalTeamModel[]>(AllTeams,{headers: this.GetHeaders() })

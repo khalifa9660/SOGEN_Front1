@@ -1,15 +1,17 @@
 export interface ILocalLeagueModel
 {
-    Id: number
-    Name: string
-    Country: string
-    UserId?: number
+    id: number
+    name: string
+    country: string
+    photo: string
+    userId?: number
 }
 
 export class LocalLeagueModel
 {
-    Id: number = 0
-    Name: string = ""
-    Country: string = ""
-    UserId?: number
+    id: number = 0
+    name: string = ""
+    country: string = ""
+    photo: string = ""
+    userId?: number
 }

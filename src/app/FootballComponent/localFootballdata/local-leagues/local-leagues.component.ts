@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ColDef, GridApi, ValueGetterParams, ValueSetterParams } from 'ag-grid-community';
+import { ColDef, GridApi, ICellRendererParams, ValueGetterParams, ValueSetterParams } from 'ag-grid-community';
 import { LocalLeagueService } from 'src/app/services/footballData/LocalData/localLeague.service';
 import { LocalLeagueModel } from 'src/app/models/localDataModels/localLeague';
 
@@ -29,16 +29,33 @@ export class LocalLeaguesComponent implements OnInit{
 
     columnDefs: ColDef[] = [
       { headerName: 'Checkbox Cell', field: 'boolean', headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true,},
+
+      { headerName: 'Photo', field: 'photo', cellRenderer: this.imageRenderer,
+        valueGetter: (params: ValueGetterParams) => { this.league.photo = params.data.photo;
+          return params.data.photo},    valueSetter: (params: ValueSetterParams) => {
+          const newVal = params.newValue;
+          const valueChanged = params.data.photo !== newVal;
+          if (valueChanged) {
+            params.data.photo = newVal;
+            this.league.photo = newVal;
+          } else {
+            this.league.photo = params.data.photo
+          }
+          return valueChanged;
+        },
+        cellDataType: 'string',
+      },
+
       { headerName: 'Name', field: 'name', 
-      valueGetter: (params: ValueGetterParams) => { this.league.Name = params.data.Name;
+      valueGetter: (params: ValueGetterParams) => { this.league.name = params.data.name;
         return params.data.name},    valueSetter: (params: ValueSetterParams) => {
         const newVal = params.newValue;
-        const valueChanged = params.data.Name !== newVal;
+        const valueChanged = params.data.name !== newVal;
         if (valueChanged) {
-          params.data.Name = newVal;
-          this.league.Name = newVal;
+          params.data.name = newVal;
+          this.league.name = newVal;
         } else{
-          this.league.Name = params.data.name;
+          this.league.name = params.data.name;
         }
         return valueChanged;
       },
@@ -46,15 +63,15 @@ export class LocalLeaguesComponent implements OnInit{
     },
   
       { headerName: 'Country', field: 'country', 
-      valueGetter: (params: ValueGetterParams) => { this.league.Country = params.data.Country;
-        return params.data.Country},    valueSetter: (params: ValueSetterParams) => {
+      valueGetter: (params: ValueGetterParams) => { this.league.country = params.data.country;
+        return params.data.country},    valueSetter: (params: ValueSetterParams) => {
         const newVal = params.newValue;
-        const valueChanged = params.data.Country !== newVal;
+        const valueChanged = params.data.country !== newVal;
         if (valueChanged) {
-          params.data.Country = newVal;
-          this.league.Country = newVal;
+          params.data.country = newVal;
+          this.league.country = newVal;
         } else {
-          this.league.Country = params.data.Country
+          this.league.country = params.data.Country
         }
         return valueChanged;
       },
@@ -70,7 +87,7 @@ export class LocalLeaguesComponent implements OnInit{
       }
 
   ngOnInit(): void {
-    this.LeagueService.GetAllLeagues().subscribe(data =>{
+    this.LeagueService.GetAllLeaguesWithoutUserId().subscribe(data =>{
       this.rowData = data
     })
   }
@@ -80,17 +97,19 @@ export class LocalLeaguesComponent implements OnInit{
   }
 
   OnDataChanged( data: any) {
-    this.league.Id = data.Id
+    this.league.id = data.id
     }
 
     updateLeague(event: LocalLeagueModel) {
+      debugger
       this.OnDataChanged(event);  
-      const leagueToUpdate = this.rowData.find(data => data.id === event.Id);
+      const leagueToUpdate = this.rowData.find(data => data.id === event.id);
     
       if (leagueToUpdate) {
-        leagueToUpdate.id = event.Id
-        leagueToUpdate.Name = event.Name;
-        leagueToUpdate.Country = event.Country;
+        leagueToUpdate.id = event.id
+        leagueToUpdate.name = event.name;
+        leagueToUpdate.country = event.country;
+        leagueToUpdate.photo = event.photo;
     
         this.LeagueService.EditLeague(leagueToUpdate).subscribe({
           next: (response) => {
@@ -132,6 +151,14 @@ export class LocalLeaguesComponent implements OnInit{
           }
         });
       }
+    }
+
+    imageRenderer(params: any) {
+      const imageElement = document.createElement('img');
+      imageElement.src = params.value; // Utilise la valeur du champ comme source de l'image
+      imageElement.width = 50; // Optionnel: définir la largeur de l'image
+      imageElement.height = 50; // Optionnel: définir la hauteur de l'image
+      return imageElement;
     }
 
 }

@@ -1,15 +1,15 @@
 export interface ILocalTeamModel
 {
-    Id: number
-    Name: string
-    Photo: string
-    ChampionshipId?: number
+    id: number
+    name: string
+    photo: string
+    championshipId?: number
 }
 
 export class LocalTeamModel
 {
-    Id: number = 0
-    Name: string = ""
-    Photo: string = ""
-    ChampionshipId?: number
+    id: number = 0
+    name: string = ""
+    photo: string = ""
+    championshipId?: number
 }

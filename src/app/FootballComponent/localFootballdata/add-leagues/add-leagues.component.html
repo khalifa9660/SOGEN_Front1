@@ -1,1 +1,44 @@
-<p>add-leagues works!</p>
+<div id="background">
+    <div class="container-fluid g-0">
+      <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
+      <main [ngClass]="{ 'blur-background': sideNavStatus }">
+        <div class="display-area p-3">
+            <h1>Add League</h1>
+            <div class="container">
+                <form [formGroup]="addLeagueForm" (ngSubmit)="saveLeague()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter The Player Name"  [(ngModel)]="league.name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo">Photo:</label>
+                                <input type="text" class="form-control" id="photo" formControlName="photo" [(ngModel)]="league.photo" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Country">Country:</label>
+                                <input type="text" class="form-control" id="country" formControlName="country" [(ngModel)]="league.country" required>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <form>
+
+                    </form>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <div>
+                        {{errorMessage}}
+                    </div>
+                </form>
+            </div>
+            
+              
+        </div>
+      </main>
+    </div>
+  </div>
+    

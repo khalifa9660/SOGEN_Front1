@@ -3,7 +3,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridReadyEvent, ICellRendererParams, ValueGetterParams, ValueSetterParams, IRowNode, GridApi } from 'ag-grid-community';
 import { LocalPlayerModel } from "src/app/models/localDataModels/localPlayer"; 
+import { LocalTeamModel } from 'src/app/models/localDataModels/localTeam';
 import { LocalPlayerService } from 'src/app/services/footballData/LocalData/localPlayer.service';
+import { LocalTeamService } from 'src/app/services/footballData/LocalData/localTeam.service';
 
 @Component({
   selector: 'app-local-players',
@@ -17,12 +19,14 @@ export class LocalPlayersComponent {
   errorMessage!: string;
   isCellValueChanged: boolean = false;
   rowToDelete!: any[];
+  teamSelection!: LocalTeamModel[];
   
-  constructor(private http: HttpClient, private router: Router, private PlayerService: LocalPlayerService ){
+  constructor(private http: HttpClient, private router: Router, private PlayerService: LocalPlayerService, private teamService: LocalTeamService ){
   }
 
   rowData: any[] = [];
   player = new LocalPlayerModel();
+  team = new LocalTeamModel();
   @Input() data: any;
   @Output() selectionChanged = new EventEmitter<any[]>();
   
@@ -31,7 +35,7 @@ export class LocalPlayersComponent {
   
   columnDefs: ColDef[] = [
     { headerName: 'Checkbox Cell', field: 'boolean', headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true,},
-    { headerName: 'Photo', field: 'photo', cellRenderer: this.imageRenderer, 
+    { headerName: 'Photo', field: 'photo', cellRenderer: this.imageRenderer,
     valueGetter: (params: ValueGetterParams) => { this.player.photo = params.data.photo;
     return params.data.photo},
     valueSetter: (params: ValueSetterParams) => {
@@ -63,7 +67,7 @@ export class LocalPlayersComponent {
     cellDataType: 'string',
   },
 
-    { headerName: 'Age', field: 'age', 
+    { headerName: 'Age', field: 'age',
     valueGetter: (params: ValueGetterParams) => { this.player.age = params.data.age;
       return params.data.age},    valueSetter: (params: ValueSetterParams) => {
       const newVal = params.newValue;
@@ -95,6 +99,20 @@ export class LocalPlayersComponent {
     },
     cellDataType: 'string',
   },
+
+  {
+    headerName: 'Team',
+    field: 'team',
+      cellRenderer: (params: any) => {
+        const element = document.createElement('span');
+        if (params.data.teamId != null) {
+          this.teamService.GetTeamById(params.data.teamId).subscribe(team => {
+            element.innerText = team.name || '';
+          });
+        }
+        return element;
+      },
+    },
 
     { headerName: 'Number', field: 'number', 
     valueGetter: (params: ValueGetterParams) => { this.player.number = params.data.number;
@@ -140,6 +158,9 @@ export class LocalPlayersComponent {
     this.PlayerService.GetAllPlayers().subscribe(data =>{
       this.rowData = data
     })
+    this.teamService.GetAllTeams().subscribe(data =>{
+      this.teamSelection = data
+    })
   }
 
   addPlayer() {
@@ -151,7 +172,6 @@ export class LocalPlayersComponent {
     }
   
   updatePlayer(event: LocalPlayerModel) {
-    debugger
     this.OnDataChanged(event);  
     const playerToUpdate = this.rowData.find(data => data.id === event.id);
   
@@ -207,8 +227,12 @@ export class LocalPlayersComponent {
   }
   
 
-  imageRenderer(params: ICellRendererParams) {
-    return '<img src="' + params.value + '" style="width:90px">';
+  imageRenderer(params: any) {
+    const imageElement = document.createElement('img');
+    imageElement.src = params.value; // Utilise la valeur du champ comme source de l'image
+    imageElement.width = 50; // Optionnel: définir la largeur de l'image
+    imageElement.height = 50; // Optionnel: définir la hauteur de l'image
+    return imageElement;
   }
 
   passGridReadyParams(params: GridReadyEvent) {

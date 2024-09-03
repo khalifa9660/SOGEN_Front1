@@ -28,6 +28,11 @@ export class LocalLeagueService {
         return this.http.post<LocalLeagueModel>(AddLeagueApi, league, {headers: this.GetHeaders() })
     }
 
+    GetAllLeaguesWithoutUserId(): Observable<LocalLeagueModel[]> {
+        let LeaguesApi = `${environment.apiUrl}/Championship/GetAllChampionshipsWithoutUserId`;
+        return this.http.get<LocalLeagueModel[]>(LeaguesApi,{headers: this.GetHeaders() })
+    }
+
     GetAllLeagues(): Observable<LocalLeagueModel[]> {
         let LeaguesApi = `${environment.apiUrl}/Championship/GetAllChampionships`;
         return this.http.get<LocalLeagueModel[]>(LeaguesApi,{headers: this.GetHeaders() })
@@ -44,6 +49,7 @@ export class LocalLeagueService {
     }
 
     EditLeague(league: LocalLeagueModel): Observable<LocalLeagueModel> {
+        debugger
         let UpdateLeagueApi = `${environment.apiUrl}/Championship/EditChampionship`;
         return this.http.put<LocalLeagueModel>(UpdateLeagueApi, league, {headers: this.GetHeaders() })
     }
