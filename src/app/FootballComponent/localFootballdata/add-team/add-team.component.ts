@@ -36,7 +36,6 @@ export class AddTeamComponent implements OnInit {
 
 
   saveTeam() {
-    debugger
     // Mettez ici votre logique pour enregistrer l'équipe  
     if (this.addTeamForm.valid) {
       const team = this.addTeamForm.value; // Récupérer les données du formulaire

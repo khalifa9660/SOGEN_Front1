@@ -57,7 +57,7 @@ export class SidenavComponent {
         },
         {
           number: "2.4",
-          name: "Get National Teams",
+          name: "Get Nations",
           icon: "bi bi-flag-fill",
         },
       ],

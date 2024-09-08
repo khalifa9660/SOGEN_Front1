@@ -49,7 +49,6 @@ export class LocalLeagueService {
     }
 
     EditLeague(league: LocalLeagueModel): Observable<LocalLeagueModel> {
-        debugger
         let UpdateLeagueApi = `${environment.apiUrl}/Championship/EditChampionship`;
         return this.http.put<LocalLeagueModel>(UpdateLeagueApi, league, {headers: this.GetHeaders() })
     }

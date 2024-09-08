@@ -96,7 +96,6 @@ export class LocalTeamsComponent implements OnInit {
   }
 
   updateTeam(event: LocalTeamModel) {
-    debugger
     this.OnDataChanged(event);  
     const teamToUpdate = this.rowData.find(data => data.id === event.id);
   

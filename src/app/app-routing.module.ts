@@ -37,7 +37,7 @@ import { LocalLeaguesComponent } from './FootballComponent/localFootballdata/loc
   { path: 'history of teams', component: HistoryTeamMembersComponent, canActivate: [AuthGuard] },
   { path: 'get players', component: PlayersComponent, canActivate: [AuthGuard] },
   { path: 'get leagues', component: LeaguesComponent, canActivate: [AuthGuard] },
-  { path: 'get national teams', component: CountriesComponent, canActivate: [AuthGuard] },
+  { path: 'get nations', component: CountriesComponent, canActivate: [AuthGuard] },
 
 ];
 

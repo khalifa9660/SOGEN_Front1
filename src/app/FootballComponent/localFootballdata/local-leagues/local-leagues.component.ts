@@ -101,7 +101,6 @@ export class LocalLeaguesComponent implements OnInit{
     }
 
     updateLeague(event: LocalLeagueModel) {
-      debugger
       this.OnDataChanged(event);  
       const leagueToUpdate = this.rowData.find(data => data.id === event.id);
     

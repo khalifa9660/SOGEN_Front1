@@ -44,7 +44,6 @@ export class AddPlayerComponent implements OnInit {
   }
 
   savePlayer() {
-    debugger
     // Mettez ici votre logique pour enregistrer le joueur  
     if (this.addPlayerForm.valid) {
       const player = this.addPlayerForm.value; // Récupérer les données du formulaire
