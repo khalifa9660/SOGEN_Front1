@@ -59,9 +59,9 @@ export class LocalTeamService {
     }
 
     DeleteTeam(team: LocalTeamModel): Observable<any> {
-        const deleteTeam = `${environment.apiUrl}/Team/DeleteTeam`;
-        return this.http.delete<any>(deleteTeam, { headers: this.GetHeaders() });
-      }      
+        const deleteTeamUrl = `${environment.apiUrl}/Team/DeleteTeam/${team.id}`;
+        return this.http.delete<any>(deleteTeamUrl, { headers: this.GetHeaders() });
+    } 
       
       
 

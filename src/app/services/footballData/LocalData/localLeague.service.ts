@@ -54,7 +54,7 @@ export class LocalLeagueService {
     }
 
     DeleteLeague(league: LocalLeagueModel): Observable<any> {
-        const deleteLeagueApi = `${environment.apiUrl}/Championship/DeleteChampionship/${league}`;
+        const deleteLeagueApi = `${environment.apiUrl}/Championship/DeleteChampionship/${league.id}`;
         return this.http.delete<any>(deleteLeagueApi, { headers: this.GetHeaders() });
       }            
 
