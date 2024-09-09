@@ -94,7 +94,10 @@ export class LocalTeamsComponent implements OnInit {
    this.LeagueService.GetAllLeagues().subscribe(data=>{
       this.localLeaguesList = data
     })
-    this.selectedLocalLeague = this.localLeaguesList[1].id;
+
+    this.TeamService.GetTeamsByChampionshipId(1).subscribe(data=>{
+      this.rowData = data
+    })
     this.getTeamsByLeagueId(this.selectedLocalLeague);
     }
 
@@ -172,7 +175,6 @@ export class LocalTeamsComponent implements OnInit {
     const imageElement = document.createElement('img');
     imageElement.src = params.value;
     imageElement.width = 50;
-    imageElement.height = 50;
     return imageElement;
   }
 }

@@ -39,7 +39,7 @@ export class AddPlayerComponent implements OnInit {
     });
 
     this.TeamService.GetAllTeams().subscribe(data =>{
-      this.teamSelection = data
+      this.teamSelection = data.sort((a, b) => a.name.localeCompare(b.name));    
     })
   }
 
