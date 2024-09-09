@@ -53,8 +53,8 @@ export class LocalLeagueService {
         return this.http.put<LocalLeagueModel>(UpdateLeagueApi, league, {headers: this.GetHeaders() })
     }
 
-    DeleteLeague(league: LocalLeagueModel): Observable<any> {
-        const deleteLeagueApi = `${environment.apiUrl}/Championship/DeleteChampionship/${league.id}`;
+    DeleteLeague(id:number): Observable<any> {
+        const deleteLeagueApi = `${environment.apiUrl}/Championship/DeleteChampionship/${id}`;
         return this.http.delete<any>(deleteLeagueApi, { headers: this.GetHeaders() });
       }            
 

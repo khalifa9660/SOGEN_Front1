@@ -58,8 +58,8 @@ export class LocalTeamService {
         return this.http.put<LocalTeamModel>(UpdateTeamApi, Team, {headers: this.GetHeaders() })
     }
 
-    DeleteTeam(team: LocalTeamModel): Observable<any> {
-        const deleteTeamUrl = `${environment.apiUrl}/Team/DeleteTeam/${team.id}`;
+    DeleteTeam(id:number): Observable<any> {
+        const deleteTeamUrl = `${environment.apiUrl}/Team/DeleteTeam/${id}`;
         return this.http.delete<any>(deleteTeamUrl, { headers: this.GetHeaders() });
     } 
       

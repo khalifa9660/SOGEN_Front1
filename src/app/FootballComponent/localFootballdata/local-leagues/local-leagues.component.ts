@@ -134,29 +134,30 @@ export class LocalLeaguesComponent implements OnInit{
     }
 
     deleteSelectedRow(selectedRow: any) {
-      const id = selectedRow.filter((row: { id: any; }) => row.id === selectedRow.id )
-    
-      if (id != null) {
-        this.LeagueService.DeleteLeague(id).subscribe({
+      if (selectedRow && selectedRow[0].id) {
+        const leagueToDelete = selectedRow[0].id;
+        
+        this.LeagueService.DeleteLeague(leagueToDelete).subscribe({
           next: (response) => {
-            console.log("Success Delete", response );
+            console.log("Success Delete", response);
             this.errorMessage = "Success delete";
-            // Rafraîchir la grille après la suppression des lignes
             window.location.reload();
           },
           error: (error) => {
-            console.log("Failed to delete!" + error);
+            console.log("Failed to delete!", error);
             this.errorMessage = "Failed to delete!";
           }
         });
+      } else {
+        console.error("selectedRow or selectedRow[0].id is undefined.");
       }
     }
 
     imageRenderer(params: any) {
       const imageElement = document.createElement('img');
-      imageElement.src = params.value; // Utilise la valeur du champ comme source de l'image
-      imageElement.width = 50; // Optionnel: définir la largeur de l'image
-      imageElement.height = 50; // Optionnel: définir la hauteur de l'image
+      imageElement.src = params.value;
+      imageElement.width = 50;
+      imageElement.height = 50; 
       return imageElement;
     }
 
