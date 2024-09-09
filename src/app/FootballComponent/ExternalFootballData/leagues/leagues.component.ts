@@ -34,13 +34,13 @@ export class LeaguesComponent {
   }
 
  
- leagueList: teamsName[] = []
+ leaguesList: teamsName[] = []
  selectedLeague!: number;
 
 
   ngOnInit(){
-    this.leagueList = this.leagueNameService.getLeagues();
-    this.selectedLeague = this.leagueList[0].id
+    this.leaguesList = this.leagueNameService.getLeagues();
+    this.selectedLeague = this.leaguesList[0].id
     this.getTeams(this.selectedLeague);
   }
 

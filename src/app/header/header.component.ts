@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { AuthActionService } from "../services/AuthService/authService";
 import { TokenStorageService } from "../services/token/token.service";
 import { teamsName } from "../models/externalDataModels/teamNames";
+import { ILocalTeamModel } from "../models/localDataModels/localTeam";
+import { ILocalLeagueModel } from "../models/localDataModels/localLeague";
 
 @Component({
   selector: "app-header",
@@ -17,13 +19,18 @@ export class HeaderComponent {
 
   // Seasons
   @Input() selectedSeasonId!: number;
-  @Input() seasonList: number[] = [];
+  @Input() seasonsList: number[] = [];
   @Output() seasonSelected = new EventEmitter<number>();
 
   // Leagues
   @Input() selectedLeagueId!: number;
-  @Input() leagueList: teamsName[] = [];
+  @Input() leaguesList: teamsName[] = [];
   @Output() leagueSelected = new EventEmitter<number>();
+
+  // localLeagues
+  @Input() selectedLocalLeagueId!: number;
+  @Input() localLeaguesList: ILocalLeagueModel[] = [];
+  @Output() localLeagueSelected = new EventEmitter<number>();
 
   // National Teams
   @Input() selectedTeamId!: number;
@@ -60,6 +67,12 @@ export class HeaderComponent {
   selectedLeague(event: any){
     const league = event.target.value;
     this.leagueSelected.emit(league);
+  }
+
+  selectedLocalLeague(event: any){
+    const league = event.target.value;
+    this.localLeagueSelected.emit(league);
+    console.log(league)
   }
   
   selectedTeam(event: any){

@@ -1,6 +1,6 @@
 <div id="background">
     <div class="container-fluid g-0">
-      <app-header (sideNavToggled)="sideNavStatus = $event" [leagueList]="leagueList" (leagueSelected)="onLeagueSelected($event)"></app-header>
+      <app-header (sideNavToggled)="sideNavStatus = $event" [leaguesList]="leaguesList" (leagueSelected)="onLeagueSelected($event)"></app-header>
       <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{ 'app-side-nav-open': sideNavStatus }"></app-sidenav>
       <main [ngClass]="{ 'blur-background': sideNavStatus }">
         <div class="display-area p-3">

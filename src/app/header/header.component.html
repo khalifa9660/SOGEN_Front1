@@ -8,22 +8,22 @@
     <div class="navbar-collapse justify-content-between">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="seasonList.length > 0">Seasons</a>
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="seasonsList.length > 0">Seasons</a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li>
               <select class="dropdown-item" (change)="selectedSeason($event)">
-                <option *ngFor="let sea of seasonList" [value]="sea">{{ sea }}</option>
+                <option *ngFor="let sea of seasonsList" [value]="sea">{{ sea }}</option>
               </select>
             </li>
           </ul>
         </li>
   
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="leagueList.length > 0">Leagues</a>
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="leaguesList.length > 0">Leagues</a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li>
               <select class="dropdown-item" (change)="selectedLeague($event)"> 
-                <option *ngFor="let lea of leagueList" [value]="lea.id">{{ lea.name }}</option>
+                <option *ngFor="let lea of leaguesList" [value]="lea.id">{{ lea.name }}</option>
               </select>
             </li>
           </ul>
@@ -93,7 +93,18 @@
             </select>
           </li>
         </ul>
-      </li> 
+      </li>
+
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" *ngIf="localLeaguesList.length > 0">Leagues</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li>
+            <select class="dropdown-item" (change)="selectedLocalLeague($event)"> 
+              <option *ngFor="let lea of localLeaguesList" [value]="lea.id">{{ lea.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </li>
   
   
     </ul>

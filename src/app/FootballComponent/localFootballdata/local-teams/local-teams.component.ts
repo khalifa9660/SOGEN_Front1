@@ -5,6 +5,8 @@ import { ColDef, GridApi, ValueGetterParams, ValueSetterParams } from 'ag-grid-c
 import { LocalTeamService } from 'src/app/services/footballData/LocalData/localTeam.service';
 import { LocalTeamModel } from 'src/app/models/localDataModels/localTeam';
 import { LocalLeagueService } from 'src/app/services/footballData/LocalData/localLeague.service';
+import { LocalLeagueModel } from 'src/app/models/localDataModels/localLeague';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-local-team',
@@ -18,13 +20,16 @@ export class LocalTeamsComponent implements OnInit {
   errorMessage!: string;
   isCellValueChanged: boolean = false;
   rowToDelete!: any[];
+  @Input() data: any;
+  @Output() selectionChanged = new EventEmitter<any[]>();
 
   constructor(private http: HttpClient, private router: Router, private TeamService: LocalTeamService, private LeagueService: LocalLeagueService){}
 
   rowData: any[] = [];
   team = new LocalTeamModel();
-  @Input() data: any;
-  @Output() selectionChanged = new EventEmitter<any[]>();
+  selectedLocalLeague!: number
+  localLeaguesList: LocalLeagueModel[] = []
+
 
   public rowSelection: 'single' | 'multiple' = 'multiple';
 
@@ -86,9 +91,22 @@ export class LocalTeamsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.TeamService.GetAllTeamsWithoutUserId().subscribe(data =>{
+   this.LeagueService.GetAllLeagues().subscribe(data=>{
+      this.localLeaguesList = data
+    })
+    this.selectedLocalLeague = this.localLeaguesList[1].id;
+    this.getTeamsByLeagueId(this.selectedLocalLeague);
+    }
+
+
+  getTeamsByLeagueId(league: number){
+    this.TeamService.GetTeamsByChampionshipId(league).subscribe(data =>{
       this.rowData = data
     })
+  }
+
+  onLocalLeagueSelected(league: number) {
+    this.getTeamsByLeagueId(league);
   }
 
   addTeam() {
