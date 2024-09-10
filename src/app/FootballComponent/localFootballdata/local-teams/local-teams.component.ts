@@ -130,6 +130,7 @@ export class LocalTeamsComponent implements OnInit {
           if (response) {
             console.log("Success Saved !", response);
             this.errorMessage = "Save success !";
+            window.location.reload();
           }
         },
         error: (error) => {
