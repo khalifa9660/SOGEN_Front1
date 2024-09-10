@@ -37,14 +37,26 @@
             <h2>Registration</h2>
   
             <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
+              <label for="firstName" class="form-label">First Name</label>
               <div class="input-group">
                 <span class="input-group-text"><i class='bx bx-user'></i></span>
-                <input type="Name" [(ngModel)]="registerDto.name" name="name" class="form-control" placeholder="Name" id="name" formControlName="name" required>
+                <input type="Name" [(ngModel)]="registerDto.firstName" name="firstName" class="form-control" placeholder="first Name" id="name" formControlName="firstName" required>
               </div>
               <div *ngIf="nameControl?.invalid && nameControl?.touched" class="text-danger">
-                <span *ngIf="nameControl?.errors?.['required']">Name is required</span>
-                <span *ngIf="nameControl?.errors?.['pattern']">Name is invalid</span>
+                <span *ngIf="nameControl?.errors?.['required']">first Name is required</span>
+                <span *ngIf="nameControl?.errors?.['pattern']">first Name is invalid</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="last" class="form-label">Last Name</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class='bx bx-user'></i></span>
+                <input type="Name" [(ngModel)]="registerDto.lastName" name="lastName" class="form-control" placeholder="Last Name" id="lastName" formControlName="lastName" required>
+              </div>
+              <div *ngIf="nameControl?.invalid && nameControl?.touched" class="text-danger">
+                <span *ngIf="nameControl?.errors?.['required']">Last Name is required</span>
+                <span *ngIf="nameControl?.errors?.['pattern']">Last Name is invalid</span>
               </div>
             </div>
             
