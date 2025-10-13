@@ -44,9 +44,8 @@ export class AddPlayerComponent implements OnInit {
   }
 
   savePlayer() {
-    // Mettez ici votre logique pour enregistrer le joueur  
     if (this.addPlayerForm.valid) {
-      const player = this.addPlayerForm.value; // Récupérer les données du formulaire
+      const player = this.addPlayerForm.value; 
       this.localPlayerService.AddPlayer(player).subscribe({
         next: (value: PlayerModel) => {
           this.router.navigate(['/players']);
@@ -64,7 +63,6 @@ export class AddPlayerComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    // Afficher l'image sélectionnée dans l'aperçu
     if (this.selectedFile) {
       const reader = new FileReader();
       reader.readAsDataURL(this.selectedFile);
