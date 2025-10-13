@@ -12,19 +12,19 @@
                            
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="name" formControlName="name" required [(ngModel)]="player.name">
+                                <input type="text" class="form-control" id="name" formControlName="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="age">Age:</label>
-                                <input type="number" class="form-control" id="age" formControlName="age" required [(ngModel)]="player.age">
+                                <input type="number" class="form-control" id="age" formControlName="age" required>
                             </div>
                             <div class="form-group">
                                 <label for="position">Position:</label>
-                                <input type="text" class="form-control" id="position" formControlName="position" required [(ngModel)]="player.position">
+                                <input type="text" class="form-control" id="position" formControlName="position" required>
                             </div>
                             <div class="form-group">
                                 <label for="team">Team:</label>
-                                <select type="select" class="form-control" id="teamId" formControlName="teamId" required [(ngModel)]="player.teamId">
+                                <select type="select" class="form-control" id="teamId" formControlName="teamId" required>
                                     <option *ngFor="let team of teamSelection" [value]="team.id">{{team.name}}</option>
                                 </select>
                             </div>
@@ -32,17 +32,17 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="number">Number:</label>
-                                <input type="number" class="form-control" id="number" required formControlName="number" [(ngModel)]="player.number">
+                                <input type="number" class="form-control" id="number" formControlName="number" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="Nationality">Nationality:</label>
-                                <input type="text" class="form-control" id="nationality" required formControlName="nationality" [(ngModel)]="player.nationality" required>
+                                <input type="text" class="form-control" id="nationality" required formControlName="nationality" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="photo">Photo URL:</label>
-                                <input type="text" class="form-control" id="photo" placeholder="Enter image URL" formControlName="photo" [(ngModel)]="player.photo" required>
+                                <input type="text" class="form-control" id="photo" placeholder="Enter image URL" formControlName="photo" required>
                                 <img *ngIf="player.photo" [src]="player.photo" class="img-thumbnail" alt="Player Photo">
                             </div>
                             
